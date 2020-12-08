@@ -1,11 +1,11 @@
-// destructuring 
+// destructuring
 
 // objects
 
 const person = {
-  name: 'ironhacker',
+  name: "ironhacker",
   age: 25,
-  favoriteMusic: 'metal'
+  favoriteMusic: "metal"
 };
 
 // es5
@@ -16,9 +16,9 @@ const person = {
 // person.country = 'spain';
 
 // es6
-// const { name, age, favoriteMusic, country = 'spain' } = person;
+const { name, age, favoriteMusic, country = "spain" } = person;
 
-// console.log(person.country)
+// console.log(country); // ==> spain
 
 // const { name: fullName, age, favoriteMusic, country = 'spain' } = person;
 
@@ -29,20 +29,25 @@ const person = {
 // nested objects
 
 const person2 = {
-  name: 'ironhacker',
+  name: "ironhacker",
   age: 25,
-  favoriteMusic: 'metal',
+  favoriteMusic: "metal",
   address: {
-    street: 'super cool st',
+    street: "super cool st",
     number: 123,
-    city: 'miami'
+    city: "miami"
   }
 };
 
 // es5
 
 console.log(person2.address.street);
-const { name, age, favoriteMusic, address: { street, number, city } } = person2;
+const {
+  name,
+  age,
+  favoriteMusic,
+  address: { street, number, city }
+} = person2;
 
 // const street = person2.address.street;
 
