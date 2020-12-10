@@ -205,9 +205,7 @@ const promo20 = (users) => {
 // ********************************************************************************************
 
 // const addActive = array => {
-//   array.map(user => user.isActive = true);
-
-//   return array
+//   return array.map(user => user.isActive = true);
 // }
 
 const addActive = (array) => {
