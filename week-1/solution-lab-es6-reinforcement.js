@@ -211,14 +211,12 @@ const promo20 = (users) => {
 // }
 
 const addActive = (array) => {
-  array.map((user) => {
+  return array.map((user) => {
     return {
       ...user,
       isActive: true
     };
   });
-
-  return array;
 };
 
 addActive(usersArray);
