@@ -1,5 +1,5 @@
 console.log("Is this my first node project?");
-
+require("dotenv").config();
 const myHttp = require("http");
 
 const myServer = myHttp.createServer((request, response) => {
@@ -25,4 +25,4 @@ const myServer = myHttp.createServer((request, response) => {
   }
 });
 
-myServer.listen(3000, () => console.log(`I am on port 3000!`));
+myServer.listen(process.env.PORT, () => console.log(`I am on port 3000!`));
