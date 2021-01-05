@@ -1,0 +1,40 @@
+<h1>Get / Post Example</h1>
+
+<br />
+<hr>
+
+<h2>GET Form</h2>
+<form action="/search" method="get">
+  <label for="searchInput">Search</label>
+  <input id="searchInput" type="text" name="searchInput" placeholder="Search Query Input">
+
+  <Button>Search</Button>
+</form>
+
+<a href="/search?searchInput=something">querySearch</a>
+
+<br>
+
+{{#if searchResults}}
+<p>{{searchResults}}</p>
+{{/if}}
+
+<br>
+<br>
+
+<br />
+<hr>
+
+<h2>POST Form</h2>
+<form action="/search" method="post">
+  <label for="searchPostInput">Search</label>
+  <input id="searchPostInput" type="text" name="searchInput" placeholder="Search Query Input">
+
+  <Button>Search</Button>
+</form>
+
+<br>
+
+{{#if searchPostResults}}
+<p>{{searchPostResults}}</p>
+{{/if}}
