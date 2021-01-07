@@ -1,0 +1,22 @@
+<h2>Sample List Page</h2>
+<br>
+
+<h3>Create a sample</h3>
+
+<form action="/sample/create" method="post">
+  <label for="nameInput">Name: <input id="nameInput" type="text" name='name'></label>
+  <label for="ageInput">Age: <input id="ageInput" type="number" name='age'></label>
+  <button>Save</button>
+</form>
+
+<br>
+<hr>
+
+<div>
+  {{#each samples}}
+  <div class="list-box">
+    <h3>{{this.name}}</h3>
+    <h4>{{this.age}}</h4>
+  </div>
+  {{/each}}
+</div>

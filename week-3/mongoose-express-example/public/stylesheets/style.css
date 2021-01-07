@@ -13,5 +13,8 @@ body {
       color: orange; }
     body a.pinkLink {
       color: pink; }
+  body .list-box {
+    border: 1px solid red;
+    padding: 2vw; }
 
 /*# sourceMappingURL=style.css.map */

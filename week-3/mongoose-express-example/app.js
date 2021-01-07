@@ -59,6 +59,9 @@ app.locals.errorTitle = 'Error Page';
 // app.use('/', index);
 // ** same as above but without splitting up the variable
 app.use('/', require('./routes/index'));
+// this means that every route in the sample routes file needs to have /sample in front of the end point of each route created.
+//          |
+app.use('/sample', require('./routes/sample-routes/sample'));
 
 
 
