@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: darkgreen; }
+  body a {
+    color: #00b7ff; }
+    body a.orangeLink {
+      color: orange; }
+    body a.pinkLink {
+      color: pink; }
+
+/*# sourceMappingURL=style.css.map */
