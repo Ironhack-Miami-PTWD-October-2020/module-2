@@ -9,6 +9,17 @@ const app = express();
 
 app.use(express.static("public"));
 
+const users = [
+  {
+    username: "Sebastian",
+    data: "Sebastion is a WDPT student",
+  },
+  {
+    username: "Anna",
+    data: "Anna is sleepy",
+  },
+];
+
 // ROUTES
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/home.html");
@@ -18,7 +29,13 @@ app.get("/about", (req, res) => {
   res.sendFile(__dirname + "/views/about.html");
 });
 
-app.get("/more-info", (req, res) => {});
+app.get("/sebastian", (req, res) => {
+  res.sendFile(__dirname + "/views/sebastian.html");
+});
+
+app.get("/anna", (req, res) => {
+  res.sendFile(__dirname + "/views/anna.html");
+});
 
 // start the server listening
 app.listen(PORT, () => {
