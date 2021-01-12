@@ -1,0 +1,6 @@
+node_modules
+
+package-lock.json
+
+# .env file should be in the gitignore file; we didn't add it for learning purposes
+# .env

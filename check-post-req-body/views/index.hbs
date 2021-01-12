@@ -1,0 +1,67 @@
+<h1>Checking for understanding</h1>
+
+<hr>
+
+<div>
+    <form action="/create" method="POST">
+        <div>
+            <label for="age-input">Age</label>
+            <input id="age-input" name="theAge" type="number">
+        </div>
+        <button type="submit">Send age info</button>
+        <br />
+        <small>Once you think you solved question 4, check your terminal for the output.</small>
+    </form>
+</div>
+
+
+
+
+<hr>
+
+{{!-- 5: Create a new form in the `index.hbs` where user should be able to input their full name and 
+full address (we need input field for the street, street number, city, zip code and country). 
+Then create a route in the `app.js` where anything user inputted would be available.  --}}
+
+
+<div>
+    <form action="/new/user" method="POST">
+        <div id="full-name">
+
+            {{!-- <label for="first-name-input"> First name</label>
+            <input type="text" name="firstName" id="first-name-input"> --}}
+
+            <label> First name:
+                <input type="text" name="firstName">
+            </label>
+
+            <label> Last name:
+                <input type="text" name="lastName">
+            </label>
+        </div>
+
+        <div id="address">
+            <label> Street:
+                <input type="text" name="street">
+            </label>
+
+            <label> Street number:
+                <input type="number" name="streetNo">
+            </label>
+
+            <label> City:
+                <input type="text" name="city">
+            </label>
+
+            <label> Zip:
+                <input type="text" name="zip">
+            </label>
+
+            <label> Country:
+                <input type="text" name="country">
+            </label>
+        </div>
+
+        <button type="submit"> Send </button>
+    </form>
+</div>
