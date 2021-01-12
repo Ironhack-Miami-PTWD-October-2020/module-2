@@ -1,0 +1,49 @@
+// Always style in your .scss file since it will override your .css file
+// * Never style in your .css if you have a .scss
+
+// to create a variable using sass you declare the variable with a $ in front of the variable name
+$link-color: #00b7ff;
+
+// a mixin is a set of styling that you can create in order to re use it later without having to write out the styling again.
+// it is declared by using te @ in front of the mixin name.
+@mixin centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body {
+    // in order to use call the mixin you must call 'include' before calling the mixin name and the mixin is considered a function so you need to add () after the name.
+    @include centerContent();
+    justify-content: space-between;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: darkgreen;
+
+    a {
+        // to use a variable using sass you call the variable name with the $ in front of it as well
+        color: $link-color;
+
+        &.orangeLink {
+            color: orange;
+        }
+
+        &.pinkLink {
+            color: pink;
+        }
+    }
+
+    .list-box {
+        border: 1px solid red;
+        padding: 2vw;
+    }
+}
+
+// a > .blueLink {
+
+// }
+
+// a > .pinkLink {
+
+// }

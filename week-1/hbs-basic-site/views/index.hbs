@@ -1,0 +1,10 @@
+<h1>Ironhack PTWD 2020 October</h1>
+{{#each user}}
+{{>student this}}
+<br />
+{{#if address}}
+<h2>{{address}}</h2>
+{{else}}
+<h5>No address</h5>
+{{/if}}
+{{/each}}
