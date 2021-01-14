@@ -1,0 +1,3 @@
+- [full-app-diagram](https://gist.github.com/sandrabosk/59d6368ccf55cb85f6f946a045b66a3f)
+- [schema-module-2](https://gist.github.com/sandrabosk/97df89b46f51aa44b265ed97ce0a333c)
+- [mvc pattern](https://gist.github.com/sandrabosk/8f7da0d9bb9753c78be866f96221b574)
