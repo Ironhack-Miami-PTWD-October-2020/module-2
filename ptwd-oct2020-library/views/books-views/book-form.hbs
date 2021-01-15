@@ -1,0 +1,27 @@
+<h2>Create a new book</h2>
+
+{{!-- localhost:3000/books --}}
+<form action="/books/create" method="POST">
+  <label> Title
+    <input type="text" name="title">
+  </label>
+
+  <label> Description
+    <textarea name="description" cols="30" rows="10"></textarea>
+  </label>
+
+  <label> Author
+    <select name="author">
+      {{#each authorsFromDb}}
+        <option value="{{_id}}"> {{firstName}} {{lastName}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label> Rating
+    <input type="number" name="rating" min=0 max=10>
+  </label>
+
+
+  <button type="submit"> Save </button>
+</form>

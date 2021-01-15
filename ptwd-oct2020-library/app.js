@@ -34,5 +34,6 @@ app.locals.title = "Express - Generated with IronGenerator";
 //      V  V  V
 app.use("/", require("./routes/index.routes"));
 app.use("/", require("./routes/author.routes"));
+app.use("/", require("./routes/book.routes"));
 
 module.exports = app;
