@@ -1,0 +1,29 @@
+<h2>Edit {{ foundBook.title }}</h2>
+
+<form action="/books/{{foundBook._id}}/update" method="POST">
+  <label> Title
+    <input type="text" name="title" value="{{foundBook.title}}">
+  </label>
+
+  <label> Description
+    <textarea name="description" cols="30" rows="10">{{ foundBook.description }}</textarea>
+  </label>
+
+  <label> Author
+    <select name="author">
+      <option selected value="{{ foundBook.author._id }}">
+        {{foundBook.author.firstName}} {{foundBook.author.lastName}}
+      </option>
+      {{#each allTheOtherAuthors}}
+        <option value="{{_id}}"> {{ firstName }} {{ lastName }}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label> Rating
+    <input type="number" name="rating" min=0 max=10 value="{{foundBook.rating}}">
+  </label>
+
+
+  <button type="submit"> Save changes </button>
+</form>

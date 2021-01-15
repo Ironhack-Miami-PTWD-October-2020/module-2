@@ -17,7 +17,7 @@ router.post("/authors/create", (req, res, next) => {
   Author.create({ firstName, lastName, nationality, birthday, pictureUrl })
     .then((authorFromDB) => {
       // console.log("new author here: ", authorFromDB);
-      res.render("authors-views/authors-list.hbs");
+      res.redirect("/authors");
     })
     .catch((err) => console.log(`Error while saving the author in DB: ${err}`));
 });

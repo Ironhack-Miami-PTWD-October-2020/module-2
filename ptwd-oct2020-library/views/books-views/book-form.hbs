@@ -12,6 +12,7 @@
 
   <label> Author
     <select name="author">
+      <option value=""></option>
       {{#each authorsFromDb}}
         <option value="{{_id}}"> {{firstName}} {{lastName}}</option>
       {{/each}}

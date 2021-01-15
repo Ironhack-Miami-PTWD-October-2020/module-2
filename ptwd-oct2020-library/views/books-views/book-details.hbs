@@ -1,0 +1,13 @@
+<h2>Details of {{ foundBook.title }}</h2>
+
+<h4>by {{ foundBook.author.firstName }} {{ foundBook.author.lastName }} </h4>
+
+<p>{{foundBook.description}}</p>
+
+<h4>Rating: {{foundBook.rating}}</h4>
+
+<a href="/books/{{foundBook._id}}/edit"> Edit </a>
+
+<br>
+
+<a href="/books">Back to books</a>
