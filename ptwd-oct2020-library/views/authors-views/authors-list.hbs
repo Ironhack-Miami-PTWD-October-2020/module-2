@@ -1,1 +1,7 @@
 <h2>Authors</h2>
+
+<ul>
+  {{#each authorsFromDB}}
+    <li>{{ firstName }} {{ lastName }} </li>
+  {{/each}}
+</ul>
