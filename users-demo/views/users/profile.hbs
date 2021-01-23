@@ -1,0 +1,11 @@
+{{!-- <h2>Welcome, {{ user.username }}</h2> --}}
+
+
+{{#if userInSession}}
+    <h3>Welcome, {{userInSession.username}} </h3>
+{{else}}
+    <b>Sorry, no user in session!<b>
+{{/if}}
+
+
+<a href="/profile"> Refresh </a>
