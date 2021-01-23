@@ -7,16 +7,18 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
-const app = express();
-
-// require database configuration
-require("./configs/db.config");
+const app = express(); // ---------------------
+//                                            |
+// require database configuration             |
+require("./configs/db.config"); //            |
+//                                            |
+app.use(cookieParser());
+require("./configs/session.config")(app); // <-
 
 // Middleware Setup
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 // Express View engine setup
 

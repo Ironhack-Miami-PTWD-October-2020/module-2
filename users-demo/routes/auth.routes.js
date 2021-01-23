@@ -11,6 +11,10 @@ const User = require("../models/User.model");
 
 const saltRounds = 10;
 
+////////////////////////////////////////
+////////// SIGNUP //////////////////////
+////////////////////////////////////////
+
 // GET the signup form so users can input their information
 router.get("/auth/signup", (req, res, next) => {
   res.render("auth/signup.hbs");
@@ -47,7 +51,10 @@ router.post("/signup", (req, res, next) => {
         email,
         // passwordHash is the key from User model and hashedPassword is a placeholder (this is how we named the returning value from the .hash() method)
         passwordHash: hashedPassword
-      }).then((userFromDB) => console.log(userFromDB));
+      }).then((userFromDB) => {
+        // console.log(userFromDB);
+        res.redirect("/profile");
+      });
     })
     .catch((err) => {
       if (err.code === 11000) {
@@ -60,6 +67,59 @@ router.post("/signup", (req, res, next) => {
         console.log("Error while creating a user: ", err);
       }
     });
+});
+
+////////////////////////////////////////
+////////// LOGIN //////////////////////
+///////////////////////////////////////
+
+// GET the login form so users can input their information
+router.get("/auth/login", (req, res, next) => {
+  res.render("auth/login.hbs");
+});
+
+// <form action="/login" method="POST">
+router.post("/login", (req, res, next) => {
+  const { email, userPassword } = req.body;
+
+  if (!email || !userPassword) {
+    res.render("auth/login.hbs", {
+      errorMessage: "All fields are mandatory. Please provide both, email and password."
+    });
+    return;
+  }
+
+  //            email (the key form the model ): email (what user submitted in the form)
+  User.findOne({ email })
+    .then((responseFromDB) => {
+      // responseFromDB can be either NULL if the email doesn't exist in the users collection
+      // or the USER OBJECT since the user is found in the DB based on the provided email
+
+      // console.log("session: ", req.session);
+
+      if (!responseFromDB) {
+        res.render("auth/login.hbs", { errorMessage: "Email is not registered. Try different email please." });
+      } else if (bcryptjs.compareSync(userPassword, responseFromDB.passwordHash)) {
+        // console.log("logged in user is: ", responseFromDB);
+
+        // currentUser ==> this is a placeholder, you can name it however you want
+        req.session.currentUser = responseFromDB;
+
+        // console.log("do i have user in session: ", req.session.currentUser);
+        // res.render("users/profile.hbs", { user: responseFromDB });
+
+        res.redirect("/profile");
+      } else {
+        res.render("auth/login.hbs", { errorMessage: "Incorrect password." });
+      }
+    })
+    .catch((err) => console.log(`Error while user login: ${err}`));
+});
+
+// USER PROFILE PAGE
+router.get("/profile", (req, res, next) => {
+  // console.log("in profile route -----> ", req.session);
+  res.render("users/profile.hbs", { userInSession: req.session.currentUser });
 });
 
 module.exports = router;
