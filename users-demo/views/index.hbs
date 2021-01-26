@@ -1,4 +1,10 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<p>Hi, {{ user.username }}</p>
+{{#if userInSession}}
+    <p>Hi, {{ userInSession.username }}</p>
+{{else}}
+
+    <p>No user in session currently!</p>
+
+{{/if}}

@@ -11,6 +11,9 @@ const User = require("../models/User.model");
 
 const saltRounds = 10;
 
+// import/require routeGuard middleware
+const routeGuard = require("../configs/route-guard.config");
+
 ////////////////////////////////////////
 ////////// SIGNUP //////////////////////
 ////////////////////////////////////////
@@ -116,10 +119,23 @@ router.post("/login", (req, res, next) => {
     .catch((err) => console.log(`Error while user login: ${err}`));
 });
 
+////////////////////////////////////////
+////////// LOGOUT //////////////////////
+////////////////////////////////////////
+
+router.post("/logout", (req, res, next) => {
+  // console.log("user in sess before: ", req.session.currentUser);
+  req.session.destroy();
+  // console.log("user in sess after: ", req.session);
+
+  res.redirect("/");
+});
+
+// if user is logged in, let them see this page -> if not, send them to login first
 // USER PROFILE PAGE
-router.get("/profile", (req, res, next) => {
+router.get("/profile", routeGuard, (req, res, next) => {
   // console.log("in profile route -----> ", req.session);
-  res.render("users/profile.hbs", { userInSession: req.session.currentUser });
+  res.render("users/profile.hbs");
 });
 
 module.exports = router;
