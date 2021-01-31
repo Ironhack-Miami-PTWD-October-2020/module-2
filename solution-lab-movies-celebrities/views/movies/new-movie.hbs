@@ -1,13 +1,27 @@
-<form action="/movies" method="POST">
+<h2>Create a new movie</h2>
+
+<hr>
+
+{{!-- if a form handles any kind of upload, it needs to have enctype property set like below --}}
+
+<form action="/movies" method="POST" enctype="multipart/form-data">
   <label>Title:
     <input type="text" name="title">
   </label>
+  <br>
   <label>Genre:
     <input type="text" name="genre">
   </label>
+  <br>
   <label>Plot:
     <input type="text" name="plot">
   </label>
+  <br>
+
+  <label> Image:
+    <input type="file" name="imageToUpload">
+  </label>
+  <br><br><br>
 
   {{!-- array of celebrities in the cast --}}
   <label>Cast:</label>
@@ -16,6 +30,7 @@
       <option value="{{_id}}">{{name}}</option>
     {{/each}}
   </select>
+  <br>
 
   <button type="submit">Create movie</button>
 </form>

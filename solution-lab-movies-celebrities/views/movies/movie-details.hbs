@@ -7,6 +7,10 @@
   {{/each }}
 </ul>
 
+<div>
+  <img src="{{foundMovieFromDB.image}}" alt="{{foundMovieFromDB.title}}" width="300">
+</div>
+
 {{!-- if you want to have delete button on the details page, this is the way: --}}
 {{!-- <form action="/movies/{{theMovie._id}}/delete" method="POST">
   <button type="submit">Delete</button>

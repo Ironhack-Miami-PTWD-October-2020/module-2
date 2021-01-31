@@ -5,6 +5,11 @@ const movieRouter = express.Router();
 const Movie = require("../models/Movie.model");
 const Celebrity = require("../models/Celebrity.model");
 
+// require file uploader in order to enable upload of images
+
+const fileUploader = require("../configs/cloudinary.config");
+
+// localhost:3000/movies/new
 movieRouter.get("/new", (req, res, next) => {
   Celebrity.find()
     .then((celebritiesFromDB) => {
@@ -18,8 +23,15 @@ movieRouter.get("/new", (req, res, next) => {
   /* <form action="/movies" method="POST"> */
 }
 
-movieRouter.post("/", (req, res, next) => {
-  Movie.create(req.body)
+// localhost:3000/movies
+movieRouter.post("/", fileUploader.single("imageToUpload"), (req, res, next) => {
+  // console.log("do i have it: ", req.file);
+
+  // console.log("------> ", req.body);
+
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.create({ title, genre, plot, image: req.file.path, cast })
     .then((newMovie) => {
       // console.log("New movie: ", newMovie);
 
@@ -31,6 +43,7 @@ movieRouter.post("/", (req, res, next) => {
 
 // get all the movies from the DB
 
+// localhost:3000/movies
 movieRouter.get("/", (req, res, next) => {
   Movie.find()
     .then((moviesFromDB) => {
@@ -43,6 +56,8 @@ movieRouter.get("/", (req, res, next) => {
 {
   /* <form action="/movies/{{this._id}}/delete" method="POST"> */
 }
+
+// localhost:3000/movies/:id/delete
 movieRouter.post("/:id/delete", (req, res, next) => {
   Movie.findByIdAndRemove(req.params.id)
     .then(() => {
